@@ -14,7 +14,7 @@ html
           img.h-12.w-12.rounded-full(src= story.user.image alt='Profile Picture')
           .ml-2.flex.flex-col
               .text-sm
-              span.font-semibold.text-lg.pl-2 #{story.user.displayName}
+              span.font-semibold.text-lg.pl-2.capitalize #{story.user.displayName}
               span.text-gray-500.text-xs.pl-2 #{createdAt}
         h4.font-bold.text-xl.pt-4.px-2.text-indigo-700.font-medium #{story.title}           
         p.text-gray-800.px-2.py-1.text-base.leading-normal(class='md:leading-relaxed') #{storyBody}
