@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        title= title
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css")
+        link(rel="stylesheet", href="/style.css")
+        link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")     
+    body.bg-gray-100
+        include includes/story_header.pug
+        <div class="grid grid-cols-3 gap-x-12 gap-y-12 py-10 px-16">
+        each story in stories
+            - const createdAt = `${new Date(story.createdAt).toDateString()}    ${new Date(story.createdAt).toLocaleTimeString('en-US', {timeZone:'Asia/Kolkata'})}`;
+            - const tagsRegex = /<(?:.|\n)*?>/gm;
+            - const storyBody = story.body.replace(tagsRegex,'').substring(0,300) + '.....';                 
+                a.relative.w-full.mx-auto.rounded-lg.bg-white.shadow.px-6.py-4.text-gray-800(href=`/stories/${story._id}` class='hover:shadow-xl')
+                    .w-full.flex.mb-4
+                       .overflow-hidden.rounded-full.w-12.h-12
+                          img(src= story.user.image alt='Profile Picture')
+                       .flex-grow.pl-3.pt-3
+                          h6.font-bold.text-lg.text-indigo-700.capitalize #{story.user.displayName}                                     
+                    .w-full.mb-4
+                    h4.font-bold.text-xl.py-2 #{story.title}
+                    p.text-md.font-medium.storyBody #{storyBody}
+                    .w-full
+                       p.text-sm.py-3.text-gray-500.text-right #{createdAt}                  
+        </div>

@@ -1,0 +1,20 @@
+html
+  head
+    title= title
+    link(rel="stylesheet", href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css")
+    link(rel="stylesheet", href="style.css")
+    link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css")
+  body
+  .max-w-md.w-full.space-y-8.login.mx-auto.my-24
+    div.p-4.shadow-lg.border-black
+      img.mx-auto.h-12.w-auto(src='https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg' alt='Workflow')
+      h2.mt-6.text-center.text-3xl.font-extrabold.text-gray-900
+        | Storybooks
+      p.mt-2.font-medium.text-center.text-sm.text-indigo-600
+        | Create public and private stories from your life  
+      div
+        a.group.relative.w-48.mx-auto.my-4.flex.justify-center.py-6.px-4.border.border-transparent.text-sm.font-medium.rounded-md.text-white.bg-indigo-600(href="/auth/google" class='hover:bg-indigo-700 focus:outline-none')
+            span.absolute.left-2.inset-y-0.flex.items-center.pl-3
+              |Sign in with Google
+              i.fab.fa-google.px-2

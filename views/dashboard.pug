@@ -1,0 +1,38 @@
+html
+  head
+    title= title
+    link(rel="stylesheet", href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css")
+    link(rel="stylesheet", href="/style.css")
+  body
+    include includes/header.pug
+    header.bg-white.shadow
+    .max-w-7xl.mx-auto.py-6.px-9
+      h2.text-2xl.font-bold.leading-tight.text-gray-900.capitalize
+        | Welcome #{name}
+    if stories
+       .w-auto.mx-20.px-8.py-5.border-b.rounded-t(class= 'from-blue-600 via-teal-500 to-purple-500 bg-gradient-to-r')
+        h3.text-2xl.leading-6.font-semibold.text-white Your Stories
+        each story in stories
+          - const createdAt = `${new Date(story.createdAt).toDateString()} ${new Date(story.createdAt).toLocaleTimeString('en-US')}`;                 
+          .bg-white.shadow.overflow-hidden.my-8
+            ul.divide-y.divide-gray-200
+              li
+                a.block(href=`/stories/${story._id}` class='bg-white')
+                  .px-4.py-4
+                    .flex.items-center.justify-between
+                      p.text-lg.font-semibold.text-gray-700
+                        | #{story.title}
+                      .ml-2.flex-shrink-0.flex
+                        p.px-2.inline-flex.text-xs.leading-5.font-semibold.rounded-full.bg-green-100.text-green-800
+                          | #{story.status}          
+                    .mt-2
+                      div
+                        p.flex.items-center.justify-between.text-sm.font-light.text-gray-500
+                           time.text-base #{createdAt}
+                form(action=`/stories/${story._id}?_method=delete` method='POST')                                      
+                  input(type="submit" class='float-right cursor-pointer px-4 py-2 bg-transparent font-bold text-red-500 -mt-9' value='Delete')
+                  a(href=`/stories/edit/${story._id}` class='float-right px-4 py-2 font-bold text-indigo-700 -mt-9') Edit           
+    else
+      p.px-20 You have no stories yet!
+    include includes/add_button.pug

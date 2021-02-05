@@ -1,0 +1,8 @@
+@font-face {
+    src: url('./GoogleSans-Regular.ttf');
+    font-family: Google;
+}
+
+body{
+  font-family: Google;
+}
