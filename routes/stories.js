@@ -40,6 +40,7 @@ router.get('/', ensureAuth, async (req, res) => {
 
      res.render('public_stories', {
       title: 'Public Stories',
+      profilePic: req.user.image,  
       stories
     })
   } catch (err) {
